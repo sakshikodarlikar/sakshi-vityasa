@@ -1,7 +1,10 @@
 # vityasa-task
 https://github.com/vityasa/hiring-2021
 
+
 Code deployed on Heroku: https://vityasa-sakshi.herokuapp.com/
+
+
 
 ## Task 1
 
@@ -10,6 +13,7 @@ eg:
 ```javascript
 [1, 4, -1, "hello", "world", 0, 10, 7]
 ```
+
 
 
 ## Task 2
@@ -33,7 +37,9 @@ eg:
 ```
 
 
-### Task 3
+
+## Task 3
+
 
 POST on ```https://vityasa-sakshi.herokuapp.com/plot``` continuously x and y co-ordinates 
 eg:
