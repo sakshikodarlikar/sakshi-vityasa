@@ -13,6 +13,7 @@ eg: ```[1, 4, -1, "hello", "world", 0, 10, 7]```
 
 
 Post on ```https://vityasa-sakshi.herokuapp.com/booking``` to create a booking.
-eg: ```JavaScript {
+eg: ```javascript
+{
   "slot": 1, "name": "John"
 }```
