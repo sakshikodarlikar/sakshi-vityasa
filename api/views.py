@@ -21,14 +21,16 @@ def task1 (request):
     invalid_entries = 0
     for i in data :
         try :
-            print (i)
+            #print (i)
             i = int(i)
             if i>0:
                 x.append(i)
                 valid_entries += 1
+            else :
+                invalid_entries += 1
         except :
             invalid_entries += 1
-    print(x)
+    #print(x)
     dict = { 'valid_entries': valid_entries,
              'invalid_entries': invalid_entries,
              'min': min(x),
@@ -37,6 +39,7 @@ def task1 (request):
              }
     return Response(dict, status=status.HTTP_200_OK)  
 
+# delete all slots which are not of today
 def delete_all ():
     today_date = datetime.date.today()
     slot_list = Slot.objects.all()
@@ -69,7 +72,7 @@ def task2_booking(request):
                 return Response({"status":f"slot full, unable to save booking for {data['name']} in slot{data['slot']}"},status=status.HTTP_409_CONFLICT)
             return Response({"status": "confirmed"},status=status.HTTP_200_OK)
         else :
-            return Response({"status":f"slot number must be between 1 and 12"},status=status.HTTP_400_BAD_REQUEST)    
+            return Response({"status":f"slot number must be between 0 and 23"},status=status.HTTP_400_BAD_REQUEST)    
         
 
     elif request.method == 'GET':
@@ -90,7 +93,7 @@ def task2_cancel(request):
     delete_all()
     data = json.loads(request.body.decode("utf-8"))
     slot = Slot.objects.get(slot_id=data['slot'])
-    print (slot.slot_1,data['name'])
+    #print (slot.slot_1,data['name'])
     if slot.slot_1 == data['name']:
         slot.slot_1 = ''
         slot.save()
@@ -154,7 +157,7 @@ def task3 (request):
     saved_list = []
     if not 'points' in request.session or not request.session['points']:
         request.session['points'] = [[data['x'],data['y']]]
-        print(request.session['points'])
+        #print(request.session['points'])
     else:
         saved_list = request.session['points']
         saved_list.append([data['x'],data['y']])
